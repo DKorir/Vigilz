@@ -1,6 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, date
+class Profile(models.Model):
+    profile_pic = models.ImageField(upload_to='images/', default='default.png')
+    bio = models.TextField(max_length=500, default="My Bio", blank=True)
+    contact = models.EmailField(max_length=100, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    def __str__(self):
+        return f'{self.user.username} Profile'
 
 class Post(models.Model):
     title = models.CharField(max_length=155)
@@ -11,3 +18,4 @@ class Post(models.Model):
     post_date = models.DateField(auto_now_add=True)
     def __str__(self):
         return self.title
+
