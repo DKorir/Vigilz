@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+           {{ post.user.first_name }} {{ post.user.last_name }}
+        </div>
+        <a href=" {% url 'article-detail' post.pk %}">
+        <img src="{{ post.photo.url }} " 
+        class="card-img-top" alt="..."></a>
+        <div class="card-body">
+            <h5 class="card-text">{{ post.title }}</h5>
+          </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Posted: {{ post.post_date }}</p>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn-primary btn-lg" href=" {{ post.url }} ">View</a>
+                </div>
+            </div>
+            
+            
+          </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+</div>
+
+{% endblock %}
