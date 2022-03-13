@@ -9,7 +9,6 @@ class ProfilePageForm(forms.ModelForm):
         fields = ('bio','profile_pic','contact')
         widgets = {
             'bio':forms.Textarea(attrs={'class': 'form-control'}),
-            'contact':forms.EmailField(attrs={'class': 'form-control'}),
         }
 
 class SignUpForm(UserCreationForm):
