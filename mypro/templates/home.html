@@ -1,8 +1,22 @@
-<h1>Projects</h1>
-<ul>
+{% extends 'base.html' %}
+{% block content%}
+    <h1>Projects</h1>
     {% for post in object_list %}
-    {{ post.title }}
-    {{ post.user }}
-    {{ post.description }}
+    <div class="card">
+        <div class="card-header">
+           {{ post.user }}
+        </div>
+        <a href=" {% url 'article-detail' post.pk %}">
+        <img src="{{ post.photo.url }} " 
+        class="card-img-top" alt="..."></a>
+        <div class="card-body">
+            <p class="card-text">{{ post.title }}</p>
+          </div>
+        <div class="card-footer">
+            <p>Posted: {{ post.post_date }}</p>
+          </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+
+{% endblock %}
