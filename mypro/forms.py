@@ -13,4 +13,9 @@ class PostForm(forms.ModelForm):
             'user':forms.TextInput(attrs={'class': 'form-control','value': ' ','id':'elder','type':'hidden'}),
             'description':forms.Textarea(attrs={'class': 'form-control'}),
         }
+
+class RatingsForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['design', 'usability', 'content']
         
