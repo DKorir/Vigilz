@@ -38,3 +38,6 @@ class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordChangingForm
     success_url = reverse_lazy('password_success')
     # success_url = reverse_lazy('home')
+
+def password_success(request):
+    return render(request,'registration/password_success.html', {})
