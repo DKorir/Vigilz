@@ -1,31 +1,8 @@
-{% extends 'base.html' %}
-
-
-
-{% block content %}
-<div class="card" style="width: 18rem;"></div>
-    {% if post.header_image %}
-        <img class="card-img-top" src=" {{ post.photo.url }} " alt="Card image cap">
-    {% endif %}
-
-    <div class="card text-center">
-        <div class="card-header">
-            {{ user.username }}
-        </div>
-        <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">{{ post.description }}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-muted">
-        2 days ago
-        </div>
-    </div>
-</div>
-
-{% for post in object_list %}
-{{post.user}}
-{% endfor %}
-
-
-{% endblock %}
+<h1>Projects</h1>
+<ul>
+    {% for post in object_list %}
+    {{ post.title }}
+    {{ post.user }}
+    {{ post.description }}
+    {% endfor %}
+</ul>
