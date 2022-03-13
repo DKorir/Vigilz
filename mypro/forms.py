@@ -6,8 +6,11 @@ from .models import Post, Profile, Rating
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('photo', 'title', 'url', 'description')
-class RatingsForm(forms.ModelForm):
-    class Meta:
-        model = Rating
-        fields = ['design', 'usability', 'content']
+        fields = ('title','description', 'url', "user",'photo')
+        widgets={
+            'title':forms.TextInput(attrs={'class': 'form-control'}),
+            'url':forms.TextInput(attrs={'class': 'form-control'}),
+            'user':forms.TextInput(attrs={'class': 'form-control','value': ' ','id':'elder','type':'hidden'}),
+            'description':forms.Textarea(attrs={'class': 'form-control'}),
+        }
+        
