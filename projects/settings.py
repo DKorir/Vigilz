@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mypro',
     'users'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,13 @@ EMAIL_USE_TLS = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
+
+
+REST_FRAMEWORK = {
+
+#use django standard 'django.contrib.auth' permissions,
+#or allow read-only access for authenticated users
+    DEFAULT_PERMISSION_CLASSES' : [ 
+    'rest_framework.permissions.DjangoModelPermissionOrAnonReadOnly'
+    ]
+}
