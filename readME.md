@@ -4,27 +4,25 @@
 >[Dominic Korir] 
   
 # Description  
-Instagram clone built using Django, Bootstrap. The features are CRUD capabilties on posts, explore page, likes, comments, direct messaging, profiles, profiles pictures, bios, search bar
+This is a django application that allows users to post their projects for others to rate and review
   
 ##  Live Link  
- Click [View Site](https://dominsta2020.herokuapp.com/)  to visit the site
+ Click [View Site](https://prodommy20.herokuapp.com/)  to visit the site
 
  
 ## User Story  
   
 * Sign in to the application to start using.
-* Upload my pictures to the application.
+* Upload my Project to the application.
 * See my profile with all my pictures.
-* Follow other users and see their pictures on my timeline.
-* Like a picture and leave a comment on it.
-  
+*search api  
 
   
 ## Setup and Installation  
 To get the project .......  
   
 ##### Cloning the repository:  
- ```https://dominsta2020.herokuapp.com/
+ ```https://github.com/DKorir/Vigilz
 ```
 ##### Navigate into the folder and install requirements  
  ```bash 
@@ -77,4 +75,4 @@ If you have any question or contributions, please email me at [dommykiprono76@gm
   
 ## License 
 
-* Copyright (c) 2019 **Dominic Korir**
+* Copyright (c) 2022 **Dominic Korir**
