@@ -32,15 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'users',
+    'mypro',
+    'django_bootstrap5',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mypro',
-    'users'
-    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -142,11 +143,4 @@ LOGIN_REDIRECT_URL='home'
 LOGOUT_REDIRECT_URL='home'
 
 
-REST_FRAMEWORK = {
 
-#use django standard 'django.contrib.auth' permissions,
-#or allow read-only access for authenticated users
-    DEFAULT_PERMISSION_CLASSES' : [ 
-    'rest_framework.permissions.DjangoModelPermissionOrAnonReadOnly'
-    ]
-}

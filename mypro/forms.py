@@ -17,5 +17,5 @@ class PostForm(forms.ModelForm):
 class RatingsForm(forms.ModelForm):
     class Meta:
         model = Rating
-        fields = ['design', 'usability', 'content']
-        
+        fields = ['user']
+        # fields = ['design', 'usability', 'content']

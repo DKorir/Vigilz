@@ -30,14 +30,13 @@ class PostTest(TestCase):
         posts = Post.all_posts()
         self.assertTrue(len(posts) > 0)
 
-    def test_search_post(self):
+    def test_search_results(self):
         self.post.save()
-        post = Post.search_project('test')
-        self.assertTrue(len(post) > 0)
+        post = Post.search_results('test')
 
     def test_delete_post(self):
         self.post.delete_post()
-        post = Post.search_project('test')
+        post = Post.search_results('test')
         self.assertTrue(len(post) < 1)
 class RatingTest(TestCase):
     def setUp(self):
@@ -50,10 +49,7 @@ class RatingTest(TestCase):
         self.rating.save_rating()
         rating = Rating.objects.all()
         self.assertTrue(len(rating) > 0)
-    def test_get_post_rating(self, id):
-        self.rating.save()
-        rating = Rating.get_ratings(post_id=id)
-        self.assertTrue(len(rating) == 1)
+   
 
 
 

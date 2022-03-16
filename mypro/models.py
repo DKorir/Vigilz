@@ -18,7 +18,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     post_date = models.DateField(auto_now_add=True)
     def __str__(self):
-        return self.title+ " | " + str(self.author)
+        return self.title
     def get_absolute_url(self):
         return reverse('home')
 
@@ -26,7 +26,7 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
     @classmethod
-    def search_project(cls, title):
+    def search_results(cls, title):
         return cls.objects.filter(title__icontains=title).all()
     @classmethod
     def all_posts(cls):
@@ -65,3 +65,4 @@ class Rating(models.Model):
         return ratings
     def __str__(self):
         return f'{self.post} Rating'
+    

@@ -1,16 +1,29 @@
-from ast import arg
+from ast import Return
+from this import d
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView
-from  .models import Post ,Rating
+from  .models import Post ,Rating, Profile
 from .forms import PostForm, RatingsForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from rest_framework import viewsets
+# from django.contrib.auth.models import User
+from .serializers import ProfileSerializer, UserSerializer, PostSerializer
+from django.http import JsonResponse
+
 
 
 
 # def home(request):
 #     return render(request,"home.html", {})
+
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
 
 class HomeView(ListView):
     model = Post
@@ -26,21 +39,28 @@ class AddProjectView(CreateView):
     template_name = 'add_project.html'
     # fields = "__all__"
 
-def Rate(request, post_id):
-    post = Post.objects.get(post_id=post.id)
-    user = request.user
-    if request.method == "POST":
-        form = RatingsForm(request.POST)
-        rate = form.save(commit=False)
-        rate.user = user
-        rate.post = post
-        rate.save()
-        return HttpResponseRedirect(reverse('article-detail', args=[post_id]))
+def rate_project(request):
+    usability = request.Post.get('usabilty')
+    design = request.Post.get('design')
+    content = request.Post.get('content')
+    rate = rate_project(usability=usability, design=design, content=content)
+    rate.save()
+    data = {'success': 'you have rated this project'}
+
+    return JsonResponse(data)
+
+
+def search_project(request):
+    if request.method == 'GET':
+        title = request.GET.get("title")
+        results = Post.objects.filter(title__icontains=title).all()
+        print(results)
+        message = f'name'
+        params = {
+            'results': results,
+            'message': message
+        }
+        return render(request, 'results.html', params)
     else:
-        form = RatingsForm()
-    template_name = 'article_detail.html'
-    context = {
-        'form': form,
-        'post': post
-    }
-    # return HttpResponse(template.render(context,request))
+        message = "You haven't searched for any image category"
+    return render(request, 'results.html', {'message': message})
